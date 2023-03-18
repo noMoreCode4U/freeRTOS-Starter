@@ -56,7 +56,10 @@ void task1_ef(void const * argument);
 void task2_ef(void const * argument);
 
 /* USER CODE BEGIN PFP */
+
+#ifdef USE_SEMI_HOSTING
 extern void initialise_monitor_handles();
+#endif
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -71,7 +74,10 @@ extern void initialise_monitor_handles();
 int main(void)
 {
   /* USER CODE BEGIN 1 */
+  #ifdef USE_SEMI_HOSTING
 	initialise_monitor_handles();
+  #endif
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -214,6 +220,11 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+static void prvSetupHardware(void)
+{
+
+}
+
 /* USER CODE END 4 */
 
 /* USER CODE BEGIN Header_task1_ef */
@@ -229,7 +240,7 @@ void task1_ef(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	printf("this is from task 1\n");
+
     osDelay(1);
   }
   /* USER CODE END 5 */
@@ -248,7 +259,7 @@ void task2_ef(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	printf("this is from task 2\n");
+
     osDelay(1);
   }
   /* USER CODE END task2_ef */
